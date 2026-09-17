@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكورسات | KHUFU TRADING ACADEMY</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        .courses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 130px 20px 60px;
+        }
+        .courses-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .courses-header h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .course-section {
+            margin-bottom: 50px;
+            background: rgba(21, 27, 43, 0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 18px;
+            padding: 25px;
+        }
+        .course-section h2 {
+            font-size: 1.5rem;
+            color: #00d2ff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .level-card {
+            background: rgba(15, 20, 32, 0.8);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            padding: 20px;
+            transition: 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .level-card:hover {
+            border-color: #00d2ff;
+            transform: translateY(-5px);
+        }
+        .level-card .level-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #e2e8f0;
+        }
+        .level-card .level-desc {
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+        .beginner { border-right: 4px solid #22c55e; }
+        .intermediate { border-right: 4px solid #f59e0b; }
+        .advanced { border-right: 4px solid #ef4444; }
+    </style>
+</head>
+<body>
+
+    <div class="animated-bg">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+    </div>
+
+    <!-- نفس هيدر الصفحة الرئيسية -->
+    <header class="header">
+        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">KHUFU</a></div>
+        <nav class="nav">
+            <a href="login.html" class="login-btn">تسجيل الدخول</a>
+            <a href="index.html">الرئيسية</a>
+            <a href="index.html#about">من نحنا</a>
+            <a href="index.html#services">الخدمات</a>
+            <a href="dashboard.html">الكورسات</a>
+            <a href="index.html#chart">شارت مباشر</a>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+    </header>
+
+    <div class="courses-container">
+        <div class="courses-header">
+            <h1>مكتبة كورسات KHUFU TRADING</h1>
+            <p>كل قسم مقسم لـ 3 مستويات: مبتدئ - متوسط - متقدم</p>
+        </div>
+
+        <!-- 1. أساسيات التداول -->
+        <div class="course-section">
+            <h2>1. أساسيات التداول</h2>
+            <div class="levels">
+                <a href="course.html?section=1&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">مقدمة في الأسواق وأنواعها + المصطلحات الأساسية</div>
+                </a>
+                <a href="course.html?section=1&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">أنواع الأوامر ومنصات التداول وإدارة الحساب</div>
+                </a>
+                <a href="course.html?section=1&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">بناء عقلية المتداول المحترف وفهم السيولة</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 2. التحليل الفني الكلاسيكي -->
+        <div class="course-section">
+            <h2>2. التحليل الفني الكلاسيكي</h2>
+            <div class="levels">
+                <a href="course.html?section=2&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">الشموع اليابانية + الدعم والمقاومة</div>
+                </a>
+                <a href="course.html?section=2&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">المؤشرات الفنية والتريند لاين والأنماط</div>
+                </a>
+                <a href="course.html?section=2&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">التداول بالبرايس أكشن المتقدم والتباعدات</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 3. التحليل الأساسي -->
+        <div class="course-section">
+            <h2>3. التحليل الأساسي</h2>
+            <div class="levels">
+                <a href="course.html?section=3&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">فهم الأخبار الاقتصادية وتأثيرها</div>
+                </a>
+                <a href="course.html?section=3&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">البنوك المركزية وأسعار الفائدة</div>
+                </a>
+                <a href="course.html?section=3&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">تحليل البيانات الاقتصادية وبناء سيناريوهات</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 4. التحليل الزمني -->
+        <div class="course-section">
+            <h2>4. التحليل الزمني</h2>
+            <div class="levels">
+                <a href="course.html?section=4&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">مقدمة في الدورات الزمنية</div>
+                </a>
+                <a href="course.html?section=4&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">فيبوناتشي الزمني والدورات الموسمية</div>
+                </a>
+                <a href="course.html?section=4&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">دمج التحليل الزمني مع البرايس أكشن</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 5. SMC -->
+        <div class="course-section">
+            <h2>5. SMC — Smart Money Concepts</h2>
+            <div class="levels">
+                <a href="course.html?section=5&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">مفهوم السيولة والأوردر بلوك</div>
+                </a>
+                <a href="course.html?section=5&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">FVG و Breaker Blocks و Mitigation</div>
+                </a>
+                <a href="course.html?section=5&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">تداول الـ SMC باحتراف ودخول المؤسسات</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 6. التحليل الموجي -->
+        <div class="course-section">
+            <h2>6. التحليل الموجي — Elliott Wave</h2>
+            <div class="levels">
+                <a href="course.html?section=6&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">قواعد الموجات الأساسية</div>
+                </a>
+                <a href="course.html?section=6&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">الموجات التصحيحية والامتدادات</div>
+                </a>
+                <a href="course.html?section=6&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">العد الموجي المتقدم والتوافق مع فيبوناتشي</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 7. ICT -->
+        <div class="course-section">
+            <h2>7. ICT — Inner Circle Trader</h2>
+            <div class="levels">
+                <a href="course.html?section=7&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">مفهوم الـ Market Structure و الـ Killzones</div>
+                </a>
+                <a href="course.html?section=7&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">Order Blocks و Fair Value Gaps حسب ICT</div>
+                </a>
+                <a href="course.html?section=7&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">استراتيجيات ICT المتقدمة والتوقيت المؤسسي</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 8. بناء استراتيجية التداول -->
+        <div class="course-section">
+            <h2>8. بناء استراتيجية التداول والاحتراف</h2>
+            <div class="levels">
+                <a href="course.html?section=8&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">أساسيات بناء خطة تداول</div>
+                </a>
+                <a href="course.html?section=8&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">إدارة المخاطر وجداول المتابعة</div>
+                </a>
+                <a href="course.html?section=8&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">تطوير نظام تداول شخصي كامل</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 9. استراتيجيات -->
+        <div class="course-section">
+            <h2>9. استراتيجيات (SK - CRT وغيرها)</h2>
+            <div class="levels">
+                <a href="course.html?section=9&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">مقدمة في استراتيجية SK و CRT</div>
+                </a>
+                <a href="course.html?section=9&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">تطبيق عملي على الاستراتيجيات</div>
+                </a>
+                <a href="course.html?section=9&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">دمج الاستراتيجيات مع SMC و ICT</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 10. الكتب -->
+        <div class="course-section">
+            <h2>10. الكتب</h2>
+            <div class="levels">
+                <a href="course.html?section=10&level=beginner" class="level-card beginner">
+                    <div class="level-title">مبتدئ</div>
+                    <div class="level-desc">كتب أساسيات التداول للمبتدئين</div>
+                </a>
+                <a href="course.html?section=10&level=intermediate" class="level-card intermediate">
+                    <div class="level-title">متوسط</div>
+                    <div class="level-desc">كتب التحليل الفني والأساسي</div>
+                </a>
+                <a href="course.html?section=10&level=advanced" class="level-card advanced">
+                    <div class="level-title">متقدم</div>
+                    <div class="level-desc">كتب الاحتراف وعلم النفس التداولي</div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محتوى الكورس | KHUFU TRADING</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        .course-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 130px 20px 60px;
+        }
+        .course-page h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #00d2ff;
+        }
+        .level-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .beginner-bg { background: rgba(34,197,94,0.15); color: #22c55e; }
+        .intermediate-bg { background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .advanced-bg { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .lessons { display: flex; flex-direction: column; gap: 15px; }
+        .lesson-card {
+            background: rgba(21,27,43,0.7);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .lesson-card:hover {
+            border-color: #00d2ff;
+            transform: translateX(-5px);
+        }
+        .lesson-num {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: #00d2ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+    </div>
+
+    <header class="header">
+        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">KHUFU</a></div>
+        <nav class="nav">
+            <a href="login.html" class="login-btn">تسجيل الدخول</a>
+            <a href="index.html">الرئيسية</a>
+            <a href="index.html#about">من نحنا</a>
+            <a href="index.html#services">الخدمات</a>
+            <a href="dashboard.html">الكورسات</a>
+            <a href="index.html#chart">شارت مباشر</a>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+    </header>
+
+    <div class="course-page">
+        <a href="dashboard.html" class="back-btn">← العودة للكورسات</a>
+        <h1 id="courseTitle">جاري التحميل...</h1>
+        <div id="levelBadge" class="level-badge"></div>
+        <div class="lessons" id="lessonsList"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const section = params.get('section');
+        const level = params.get('level');
+
+        const sections = {
+            '1': 'أساسيات التداول',
+            '2': 'التحليل الفني الكلاسيكي',
+            '3': 'التحليل الأساسي',
+            '4': 'التحليل الزمني',
+            '5': 'SMC — Smart Money Concepts',
+            '6': 'التحليل الموجي — Elliott Wave',
+            '7': 'ICT — Inner Circle Trader',
+            '8': 'بناء استراتيجية التداول والاحتراف',
+            '9': 'استراتيجيات (SK - CRT)',
+            '10': 'الكتب'
+        };
+
+        const levelNames = {
+            'beginner': 'مبتدئ',
+            'intermediate': 'متوسط',
+            'advanced': 'متقدم'
+        };
+
+        const levelClass = {
+            'beginner': 'beginner-bg',
+            'intermediate': 'intermediate-bg',
+            'advanced': 'advanced-bg'
+        };
+
+        document.getElementById('courseTitle').textContent = sections[section] || 'كورس';
+        const badge = document.getElementById('levelBadge');
+        badge.textContent = levelNames[level] || '';
+        badge.classList.add(levelClass[level] || '');
+
+        let lessons = [];
+
+        // 1. أساسيات التداول
+        if (section === '1' && level === 'beginner') {
+            lessons = [
+                { 
+                    title: 'الدرس الأول - مقدمة', 
+                    link: 'https://playmogo.com/e/is9viuv5fyx1' 
+                },
+                { 
+                    title: 'الدرس الثاني - المفاهيم الأساسية', 
+                    link: 'https://playmogo.com/e/is9viuv5fyx1' 
+                },
+                { title: 'الدرس الثالث - التطبيق العملي', link: '#' },
+                { title: 'الدرس الرابع - أمثلة حية', link: '#' },
+                { title: 'الدرس الخامس - ملخص', link: '#' }
+            ];
+        } else if (section === '1' && level === 'intermediate') {
+            lessons = [
+                { title: 'الدرس الأول - أنواع الأوامر', link: '#' },
+                { title: 'الدرس الثاني - منصات التداول', link: '#' },
+                { title: 'الدرس الثالث - إدارة الحساب', link: '#' }
+            ];
+        } else if (section === '1' && level === 'advanced') {
+            lessons = [
+                { title: 'الدرس الأول - عقلية المحترف', link: '#' },
+                { title: 'الدرس الثاني - فهم السيولة', link: '#' },
+                { title: 'الدرس الثالث - بناء النظام', link: '#' }
+            ];
+        }
+
+        // 2. التحليل الفني
+        else if (section === '2' && level === 'beginner') {
+            lessons = [
+                { title: 'الدرس الأول - الشموع اليابانية', link: '#' },
+                { title: 'الدرس الثاني - الدعم والمقاومة', link: '#' },
+                { title: 'الدرس الثالث - التريند', link: '#' }
+            ];
+        } else if (section === '2' && level === 'intermediate') {
+            lessons = [
+                { title: 'الدرس الأول - المؤشرات الفنية', link: '#' },
+                { title: 'الدرس الثاني - الأنماط الفنية', link: '#' }
+            ];
+        } else if (section === '2' && level === 'advanced') {
+            lessons = [
+                { title: 'الدرس الأول - برايس أكشن متقدم', link: '#' },
+                { title: 'الدرس الثاني - التباعدات', link: '#' }
+            ];
+        }
+
+        // 3. التحليل الأساسي
+        else if (section === '3' && level === 'beginner') {
+            lessons = [
+                { title: 'الدرس الأول - الأخبار الاقتصادية', link: '#' },
+                { title: 'الدرس الثاني - تأثير الأخبار', link: '#' }
+            ];
+        } else if (section === '3' && level === 'intermediate') {
+            lessons = [
+                { title: 'الدرس الأول - البنوك المركزية', link: '#' },
+                { title: 'الدرس الثاني - أسعار الفائدة', link: '#' }
+            ];
+        } else if (section === '3' && level === 'advanced') {
+            lessons = [
+                { title: 'الدرس الأول - بناء السيناريوهات', link: '#' }
+            ];
+        }
+
+        // 4. التحليل الزمني
+        else if (section === '4' && level === 'beginner') {
+            lessons = [
+                { title: 'الدرس الأول - مقدمة في الدورات', link: '#' }
+            ];
+        } else if (section === '4' && level === 'intermediate') {
+            lessons = [
+                { title: 'الدرس الأول - فيبوناتشي الزمني', link: '#' }
+            ];
+        } else if (section === '4' && level === 'advanced') {
+            lessons = [
+                { title: 'الدرس الأول - دمج الزمني مع البرايس', link: '#' }
+            ];
+        }
+
+        // 5. SMC
+        else if (section === '5' && level === 'beginner') {
+            lessons = [
+                { title: 'الدرس الأول - مفهوم السيولة', link: '#' },
+                { title: 'الدرس الثاني - Order Block', link: '#' }
+            ];
+        } else if (section === '5' && level === 'intermediate') {
+            lessons = [
+                { title: 'الدرس الأول - FVG', link: '#' },
+                { title: 'الدرس الثاني - Breaker Blocks', link: '#' }
+            ];
+        } else if (section === '5' && level === 'advanced') {
+            lessons = [
+                { title: 'الدرس الأول - تداول المؤسسات', link: '#' }
+            ];
+        }
+
+        // 6. Elliott Wave
+        else if (section === '6' && level === 'beginner') {
+            lessons = [
+                { title: 'الدرس الأول - قواعد الموجات', link: '#' }
+            ];
+        } else if (section === '6' && level === 'intermediate') {
+            lessons = [
+                { title: 'الدرس الأول - الموجات التصحيحية', link: '#' }
+            ];
+        } else if (section === '6' && level === 'advanced') {
+            lessons = [
+                { title: 'الدرس الأول - العد الموجي المتقدم', link: '#' }
+            ];
+        }
+
+        // 7. ICT
+        else if (section === '7' && level === 'beginner') {
+            lessons = [
+                { title: 'الدرس الأول - Market Structure', link: '#' },
+                { title: 'الدرس الثاني - Killzones', link: '#' }
+            ];
+        } else if (section === '7' && level === 'intermediate') {
+            lessons = [
+                { title: 'الدرس الأول - Order Blocks ICT', link: '#' }
+            ];
+        } else if (section === '7' && level === 'advanced') {
+            lessons = [
+                { title: 'الدرس الأول - التوقيت المؤسسي', link: '#' }
+            ];
+        }
+
+        // 8. بناء استراتيجية
+        else if (section === '8' && level === 'beginner') {
+            lessons = [
+                { title: 'الدرس الأول - أساسيات الخطة', link: '#' }
+            ];
+        } else if (section === '8' && level === 'intermediate') {
+            lessons = [
+                { title: 'الدرس الأول - إدارة المخاطر', link: '#' }
+            ];
+        } else if (section === '8' && level === 'advanced') {
+            lessons = [
+                { title: 'الدرس الأول - النظام الشخصي', link: '#' }
+            ];
+        }
+
+        // 9. استراتيجيات
+        else if (section === '9' && level === 'beginner') {
+            lessons = [
+                { title: 'الدرس الأول - استراتيجية SK', link: '#' },
+                { title: 'الدرس الثاني - استراتيجية CRT', link: '#' }
+            ];
+        } else if (section === '9' && level === 'intermediate') {
+            lessons = [
+                { title: 'الدرس الأول - تطبيق عملي', link: '#' }
+            ];
+        } else if (section === '9' && level === 'advanced') {
+            lessons = [
+                { title: 'الدرس الأول - دمج مع SMC و ICT', link: '#' }
+            ];
+        }
+
+        // 10. الكتب
+        else if (section === '10' && level === 'beginner') {
+            lessons = [
+                { title: 'كتب المبتدئين', link: '#' }
+            ];
+        } else if (section === '10' && level === 'intermediate') {
+            lessons = [
+                { title: 'كتب التحليل', link: '#' }
+            ];
+        } else if (section === '10' && level === 'advanced') {
+            lessons = [
+                { title: 'كتب الاحتراف', link: '#' }
+            ];
+        }
+
+        else {
+            lessons = [
+                { title: 'قريبًا...', link: '#' }
+            ];
+        }
+
+        // ===== عرض الدروس =====
+        const list = document.getElementById('lessonsList');
+
+        lessons.forEach((lesson, i) => {
+            const div = document.createElement('div');
+            div.className = 'lesson-card';
+
+            div.innerHTML = `
+                <div class="lesson-num">${i + 1}</div>
+                <div>${lesson.title}</div>
+            `;
+
+            div.addEventListener('click', () => {
+                if (lesson.link && lesson.link !== '#') {
+                    const url = encodeURIComponent(lesson.link);
+                    const title = encodeURIComponent(lesson.title);
+                    window.location.href = `player.html?url=${url}&title=${title}&section=${section}&level=${level}`;
+                }
+            });
+
+            list.appendChild(div);
+        });
+    </script>
+</body>
+</html>
