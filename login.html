@@ -1,4 +1,380 @@
-const newUser = {
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | KHUFU TRADING</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 40px;
+        }
+
+        .auth-box {
+            background: rgba(21, 27, 43, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 45px 40px;
+            width: 100%;
+            max-width: 460px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .auth-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: #a0aec0;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group label .icon {
+            font-size: 1.15rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid #2a3548;
+            background: #0f1420;
+            color: white;
+            font-size: 1rem;
+            font-family: 'Cairo', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #00d2ff;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            color: white;
+            font-size: 1.15rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 210, 255, 0.35);
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.95rem;
+        }
+
+        .auth-links a {
+            color: #00d2ff;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            background: #0f1420;
+            color: #a0aec0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            color: white;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .error-toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #7f1d1d;
+            color: #fecaca;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            z-index: 9999;
+            transition: bottom 0.4s ease;
+            border: 1px solid #991b1b;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .error-toast.show {
+            bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="errorToast" class="error-toast"></div>
+
+    <div class="animated-bg">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+    </div>
+
+    <header class="header">
+        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">KHUFU</a></div>
+        <nav class="nav">
+            <a href="login.html" class="login-btn">تسجيل الدخول</a>
+            <a href="index.html">الرئيسية</a>
+            <a href="index.html#about">من نحنا</a>
+            <a href="index.html#services">الخدمات</a>
+            <a href="dashboard.html">الكورسات</a>
+            <a href="index.html#chart">شارت مباشر</a>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="login">تسجيل الدخول</button>
+                <button class="tab-btn" data-tab="register">إنشاء حساب</button>
+            </div>
+
+            <!-- ===== تسجيل الدخول ===== -->
+            <div id="login" class="form-section active">
+                <h2>تسجيل الدخول</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label><span class="icon">✉️</span> البريد الإلكتروني</label>
+                        <input type="email" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="icon">🔒</span> كلمة المرور</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="auth-btn">دخول</button>
+                </form>
+            </div>
+
+            <!-- ===== إنشاء حساب ===== -->
+            <div id="register" class="form-section">
+                <h2>إنشاء حساب جديد</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label><span class="icon">👤</span> الاسم الكامل</label>
+                        <input type="text" placeholder="اسمك الكامل" required>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="icon">✉️</span> البريد الإلكتروني</label>
+                        <input type="email" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="icon">📱</span> رقم الواتساب</label>
+                        <input type="tel" placeholder="01xxxxxxxxx" required>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="icon">✈️</span> يوزر التليجرام</label>
+                        <input type="text" placeholder="@username" required>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="icon">🔒</span> كلمة المرور</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="icon">🔒</span> تأكيد كلمة المرور</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="auth-btn">إنشاء الحساب</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import { getDatabase, ref, push, set, get } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCTnyFMujoM64OEjVvkPLXlOnMGYUyMAMQ",
+    authDomain: "khufu-treding.firebaseapp.com",
+    databaseURL: "https://khufu-treding-default-rtdb.firebaseio.com",
+    projectId: "khufu-treding",
+    storageBucket: "khufu-treding.firebasestorage.app",
+    messagingSenderId: "993256232227",
+    appId: "1:993256232227:web:630c728c636642f1bf2896",
+    measurementId: "G-KQY51H9JPJ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  function showError(message) {
+    const toast = document.getElementById('errorToast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3500);
+  }
+
+  // التبويبات
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('.form-section');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ===== تسجيل الدخول =====
+  const loginForm = document.getElementById('login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const email = loginForm.querySelector('input[type="email"]').value.trim().toLowerCase();
+      const password = loginForm.querySelector('input[type="password"]').value;
+
+      try {
+        const snapshot = await get(ref(database, 'users'));
+        const users = snapshot.val();
+
+        if (!users) {
+          showError('لم يسجل من قبل');
+          return;
+        }
+
+        let foundUser = null;
+        Object.values(users).forEach(user => {
+          if (user.email && user.email.toLowerCase() === email) {
+            foundUser = user;
+          }
+        });
+
+        if (!foundUser) {
+          showError('لم يسجل من قبل');
+          return;
+        }
+
+        if (foundUser.password !== password) {
+          showError('كلمة المرور غير صحيحة');
+          return;
+        }
+
+        if (foundUser.status === 'pending') {
+          showError('حسابك قيد المراجعة، انتظر موافقة الإدارة');
+          return;
+        }
+
+        if (foundUser.status === 'rejected') {
+          showError('تم رفض حسابك، تواصل مع الإدارة');
+          return;
+        }
+
+        if (foundUser.status === 'approved') {
+          localStorage.setItem('khufuLoggedIn', 'true');
+          localStorage.setItem('khufuUserEmail', email);
+          window.location.href = 'dashboard.html';
+        }
+
+      } catch (error) {
+        console.error(error);
+        showError('حدث خطأ، حاول مرة أخرى');
+      }
+    });
+  }
+
+  // ===== إنشاء حساب =====
+  const registerForm = document.getElementById('register-form');
+  if (registerForm) {
+    registerForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const inputs = registerForm.querySelectorAll('input');
+      
+      const name = inputs[0].value.trim();
+      const email = inputs[1].value.trim().toLowerCase();
+      const whatsapp = inputs[2].value.trim();
+      const telegram = inputs[3].value.trim();
+      const password = inputs[4].value;
+      const confirmPassword = inputs[5].value;
+
+      if (password !== confirmPassword) {
+        showError('كلمة المرور وتأكيدها غير متطابقين');
+        return;
+      }
+
+      if (password.length < 6) {
+        showError('كلمة المرور لازم تكون 6 أحرف على الأقل');
+        return;
+      }
+
+      try {
+        const snapshot = await get(ref(database, 'users'));
+        const users = snapshot.val() || {};
+
+        const emailExists = Object.values(users).some(user => 
+          user.email && user.email.toLowerCase() === email
+        );
+        
+        if (emailExists) {
+          showError('هذا البريد الإلكتروني مسجل من قبل');
+          return;
+        }
+
+        const newUser = {
           name: name,
           email: email,
           whatsapp: whatsapp,
