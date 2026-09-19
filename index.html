@@ -11,40 +11,48 @@
         /* ===== أماكن الإعلانات ===== */
         .ad-container {
             width: 100%;
-            max-width: 1200px;
-            margin: 30px auto;
+            margin: 20px auto;
             text-align: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* يخلي الإعلان في النص */
         }
 
         .ad-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 6px;
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 4px;
             letter-spacing: 1px;
         }
 
         .ad-placeholder {
-            background: linear-gradient(135deg, #1a2332, #0f1420);
-            border: 1px dashed #3a4a5c;
-            border-radius: 12px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
             color: #7a8a9a;
             font-size: 15px;
-            display: flex;
+            display: inline-flex;          /* يتقلص على حجم الإعلان */
             align-items: center;
             justify-content: center;
             min-height: 90px;
-            transition: all 0.3s ease;
+            max-width: 100%;
+            overflow: hidden;
+            margin: 0 auto;
         }
 
-        .ad-placeholder:hover {
-            border-color: #c9a227;
-            color: #c9a227;
+        /* الإعلان نفسه يفضل حجمه الطبيعي ويتوسط */
+        .ad-placeholder iframe,
+        .ad-placeholder > div,
+        .ad-placeholder > ins {
+            margin: 0 auto !important;
+            display: block !important;
+            max-width: 100% !important;
         }
 
         /* بانر علوي */
         .ad-top {
-            margin: 35px auto 0;
+            margin: 40px auto 10px;
         }
         .ad-top .ad-placeholder {
             min-height: 90px;
@@ -52,7 +60,7 @@
 
         /* بانر عريض */
         .ad-banner .ad-placeholder {
-            min-height: 120px;
+            min-height: 90px;
         }
 
         /* كارد إعلاني جوه الخدمات */
@@ -90,23 +98,32 @@
 
         /* بانر قبل الفوتر */
         .ad-footer {
-            margin: 40px auto 20px;
+            margin: 30px auto 15px;
         }
         .ad-footer .ad-placeholder {
-            min-height: 100px;
+            min-height: 90px;
         }
 
         /* موبايل */
         @media (max-width: 768px) {
+            .ad-container {
+                margin: 12px auto;
+                padding: 0 4px;
+            }
             .ad-placeholder {
                 min-height: 70px !important;
                 font-size: 13px;
+                width: 100%;
+            }
+            .ad-placeholder iframe {
+                width: 100% !important;
+                max-width: 100% !important;
             }
             .ad-card {
                 min-height: 180px;
             }
             .ad-top {
-                margin: 25px auto 0;
+                margin: 20px auto 5px;
             }
         }
     </style>
@@ -114,7 +131,7 @@
 <body>
 
     <!-- رسالة إخلاء المسؤولية -->
-    <div id="disclaimer-modal" class="modal hidden" style="display: none;">
+    <div id="disclaimer-modal" class="modal">
         <div class="modal-content">
             <h2>إخلاء مسؤولية</h2>
             <p>
@@ -125,7 +142,7 @@
             </p>
             <button id="accept-disclaimer">أنا المسؤول</button>
         </div>
-    </div>
+    </div> 
 
     <!-- الهيدر -->
     <header class="header">
@@ -145,7 +162,17 @@
     <div class="ad-container ad-top">
         <div class="ad-label">إعلان</div>
         <div class="ad-placeholder">
-            مساحة إعلانية علوية (728×90 أو Responsive)
+            <script>
+  atOptions = {
+    'key' : 'bd49f7621677b70fd631640ad246f7a8',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
+            
         </div>
     </div>
 
@@ -169,7 +196,16 @@
     <div class="ad-container ad-banner">
         <div class="ad-label">إعلان</div>
         <div class="ad-placeholder">
-            مساحة إعلانية (Leaderboard / Responsive)
+            <script>
+  atOptions = {
+    'key' : 'bd49f7621677b70fd631640ad246f7a8',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
         </div>
     </div>
 
@@ -211,7 +247,16 @@
     <div class="ad-container ad-banner">
         <div class="ad-label">إعلان</div>
         <div class="ad-placeholder">
-            مساحة إعلانية بعد الشارت
+            <script>
+  atOptions = {
+    'key' : 'bd49f7621677b70fd631640ad246f7a8',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
         </div>
     </div>
 
@@ -243,8 +288,16 @@
                 <div class="service-card ad-card">
                     <div class="ad-label">إعلان</div>
                     <div class="ad-card-content">
-                        مساحة إعلانية<br>
-                        (مربع 300×250 أو Responsive)
+                       <script>
+  atOptions = {
+    'key' : '2b81e366d6ebcde47d714ba7f3101048',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/2b81e366d6ebcde47d714ba7f3101048/invoke.js"></script>
                     </div>
                 </div>
 
@@ -292,7 +345,17 @@
     <div class="ad-container ad-footer">
         <div class="ad-label">إعلان</div>
         <div class="ad-placeholder">
-            مساحة إعلانية قبل الفوتر (Responsive)
+            <script>
+  atOptions = {
+    'key' : 'bd49f7621677b70fd631640ad246f7a8',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
+            
         </div>
     </div>
 

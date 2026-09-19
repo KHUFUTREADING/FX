@@ -55,19 +55,24 @@ function updateHeaderAuth() {
 document.addEventListener('DOMContentLoaded', function () {
     updateHeaderAuth();
 
-    // ===== إخلاء المسؤولية =====
+    // ===== إخلاء المسؤولية (نسخة مُصلحة) =====
     const modal = document.getElementById('disclaimer-modal');
     const acceptBtn = document.getElementById('accept-disclaimer');
 
     if (modal && acceptBtn) {
-        // لو لسه ما وافقش → أظهر الرسالة
+        // شيل أي ستايل قديم
+        modal.style.display = '';
+        modal.classList.remove('hidden');
+
+        // لو لسه ما وافقش → أظهر الرسالة إجباري
         if (localStorage.getItem('disclaimerAccepted') !== 'true') {
-            modal.classList.remove('hidden');
             modal.style.display = 'flex';
+            modal.classList.remove('hidden');
+            console.log('رسالة إخلاء المسؤولية ظهرت');
         } else {
-            // وافق قبل كده → خليها مخفية
-            modal.classList.add('hidden');
             modal.style.display = 'none';
+            modal.classList.add('hidden');
+            console.log('المستخدم وافق قبل كده');
         }
 
         // الضغط على زر "أنا المسؤول"
@@ -76,9 +81,12 @@ document.addEventListener('DOMContentLoaded', function () {
             e.stopPropagation();
 
             localStorage.setItem('disclaimerAccepted', 'true');
-            modal.classList.add('hidden');
             modal.style.display = 'none';
+            modal.classList.add('hidden');
+            console.log('تم قبول إخلاء المسؤولية');
         });
+    } else {
+        console.error('مشكلة: عنصر الرسالة أو الزر مش موجود');
     }
 
     // ===== قائمة الموبايل =====
