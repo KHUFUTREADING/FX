@@ -153,21 +153,19 @@
     </header>
 
     <!-- ==================== إعلان 1 ==================== -->
-    <!-- المكان: تحت الهيدر مباشرة -->
-    <!-- المقاس: 728×90 أو Responsive -->
     <div class="ad-container ad-top">
         <div class="ad-label">إعلان</div>
         <div class="ad-placeholder">
-       <script>
-  atOptions = {
-    'key' : 'bd49f7621677b70fd631640ad246f7a8',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
+            <script>
+              atOptions = {
+                'key' : 'bd49f7621677b70fd631640ad246f7a8',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
         </div>
     </div>
 
@@ -176,26 +174,31 @@
         <h1 id="courseTitle">جاري التحميل...</h1>
         <div id="levelBadge" class="level-badge"></div>
 
+        <!-- ==================== إعلان 2 ==================== -->
+        <div class="ad-container ad-after-title">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <!-- حط كود الإعلان هنا لو حابب -->
+                مساحة إعلانية 300×250
+            </div>
+        </div>
 
         <div class="lessons" id="lessonsList"></div>
 
         <!-- ==================== إعلان 3 ==================== -->
-        <!-- المكان: بعد قائمة الدروس -->
-        <!-- المقاس: 728×90 أو Responsive -->
         <div class="ad-container ad-bottom">
             <div class="ad-label">إعلان</div>
             <div class="ad-placeholder">
-               <script>
-  atOptions = {
-    'key' : 'bd49f7621677b70fd631640ad246f7a8',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
-               
+                <script>
+                  atOptions = {
+                    'key' : 'bd49f7621677b70fd631640ad246f7a8',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
             </div>
         </div>
     </div>
@@ -247,7 +250,7 @@
                 },
                 { 
                     title: 'الدرس الثاني - المفاهيم الأساسية', 
-                    link: 'https://playmogo.com/e/is9viuv5fyx1' 
+                    link: 'https://playmogo.com/e/ogg125xfpijq' 
                 },
                 { title: 'الدرس الثالث - التطبيق العملي', link: '#' },
                 { title: 'الدرس الرابع - أمثلة حية', link: '#' },
@@ -434,6 +437,7 @@
                 if (lesson.link && lesson.link !== '#') {
                     const url = encodeURIComponent(lesson.link);
                     const title = encodeURIComponent(lesson.title);
+                    // ✅ تم التصليح هنا
                     window.location.href = `player.html?url=\( {url}&title= \){title}&section=\( {section}&level= \){level}`;
                 }
             });

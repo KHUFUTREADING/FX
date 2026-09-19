@@ -4,42 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مشغل الفيديو | KHUFU TRADING</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: #0b0f1a;
-            color: #fff;
-            min-height: 100vh;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: rgba(15, 20, 35, 0.95);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo a {
-            color: #00d2ff;
-            text-decoration: none;
-            font-weight: 900;
-            font-size: 1.5rem;
-        }
-        .back-btn {
-            color: #00d2ff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-        }
+        /* ===== محتوى الصفحة فقط ===== */
         .player-container {
             max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 130px 20px 60px;
         }
         .video-title {
             font-size: 1.6rem;
@@ -62,8 +34,8 @@
             border: none;
         }
         .controls-info {
-            margin-top: 20px;
-            padding: 15px 20px;
+            margin-top: 18px;
+            padding: 14px 18px;
             background: rgba(21,27,43,0.7);
             border-radius: 12px;
             font-size: 0.95rem;
@@ -72,16 +44,25 @@
     </style>
 </head>
 <body>
-    <script>
-        // حماية الصفحة - لازم يكون مسجل دخول
-        if (localStorage.getItem('khufuLoggedIn') !== 'true') {
-            window.location.href = 'login.html';
-        }
-    </script>
 
+    <div class="animated-bg">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+    </div>
+
+    <!-- نفس هيدر صفحة الكورسات بالظبط -->
     <header class="header">
-        <div class="logo"><a href="index.html">KHUFU</a></div>
-        <a href="#" id="backLink" class="back-btn">← العودة للدروس</a>
+        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">KHUFU</a></div>
+        <nav class="nav" id="navMenu">
+            <a href="login.html" class="login-btn">تسجيل الدخول</a>
+            <a href="index.html">الرئيسية</a>
+            <a href="index.html#about">من نحنا</a>
+            <a href="index.html#services">الخدمات</a>
+            <a href="dashboard.html">الكورسات</a>
+            <a href="index.html#chart">شارت مباشر</a>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
     </header>
 
     <div class="player-container">
@@ -97,28 +78,30 @@
     </div>
 
     <script>
+        // حماية الصفحة
+        if (localStorage.getItem('khufuLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        // فتح/إغلاق قائمة الموبايل
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // كود الفيديو
         const params = new URLSearchParams(window.location.search);
         const videoUrl = params.get('url');
         const title = params.get('title') || 'درس';
-        const section = params.get('section');
-        const level = params.get('level');
 
         document.getElementById('videoTitle').textContent = decodeURIComponent(title);
-        
-        // رجوع لصفحة الدروس
-        const backLink = document.getElementById('backLink');
-        if (section && level) {
-            backLink.href = `course.html?section=\( {section}&level= \){level}`;
-        } else {
-            backLink.href = 'dashboard.html';
-        }
 
-        // تشغيل الفيديو
         if (videoUrl) {
             const decodedUrl = decodeURIComponent(videoUrl);
             const wrapper = document.getElementById('videoWrapper');
 
-            // دالة لاستخراج ID من يوتيوب
             function getYouTubeId(url) {
                 const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
                 const match = url.match(regExp);
@@ -128,7 +111,6 @@
             const youtubeId = getYouTubeId(decodedUrl);
 
             if (youtubeId) {
-                // يوتيوب
                 wrapper.innerHTML = `
                     <iframe 
                         src="https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1" 
@@ -140,7 +122,6 @@
                     </iframe>
                 `;
             } 
-            // أي رابط embed (مثل playmogo / morencius / vimeo / doodstream ...)
             else if (
                 decodedUrl.includes('/embed/') || 
                 decodedUrl.includes('/e/') ||
@@ -161,7 +142,6 @@
                     </iframe>
                 `;
             }
-            // مصدر فيديو مباشر (MP4)
             else {
                 wrapper.innerHTML = `
                     <video controls controlsList="nodownload" playsinline>
