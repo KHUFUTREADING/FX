@@ -70,6 +70,82 @@
         .beginner { border-right: 4px solid #22c55e; }
         .intermediate { border-right: 4px solid #f59e0b; }
         .advanced { border-right: 4px solid #ef4444; }
+
+        /* ===== أماكن الإعلانات ===== */
+        .ad-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            text-align: center;
+            padding: 0 15px;
+        }
+        .ad-label {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        .ad-placeholder {
+            background: linear-gradient(135deg, #1a2332, #0f1420);
+            border: 1px dashed #3a4a5c;
+            border-radius: 12px;
+            color: #7a8a9a;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .ad-placeholder:hover {
+            border-color: #00d2ff;
+            color: #00d2ff;
+        }
+
+        /* إعلان علوي */
+        .ad-top {
+            margin: 100px auto 25px;
+        }
+        .ad-top .ad-placeholder {
+            min-height: 90px;
+            max-width: 728px;
+            margin: 0 auto;
+        }
+
+        /* إعلان بعد العنوان */
+        .ad-after-header .ad-placeholder {
+            min-height: 90px;
+            max-width: 728px;
+            margin: 0 auto;
+        }
+
+        /* إعلان مربع في النص */
+        .ad-middle .ad-placeholder {
+            min-height: 250px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* إعلان أخير */
+        .ad-bottom .ad-placeholder {
+            min-height: 90px;
+            max-width: 728px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .ad-top .ad-placeholder,
+            .ad-after-header .ad-placeholder,
+            .ad-bottom .ad-placeholder {
+                min-height: 70px;
+            }
+            .ad-middle .ad-placeholder {
+                min-height: 200px;
+            }
+            .ad-top {
+                margin-top: 85px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -80,7 +156,7 @@
         <div class="circle circle3"></div>
     </div>
 
-    <!-- نفس هيدر الصفحة الرئيسية -->
+    <!-- الهيدر -->
     <header class="header">
         <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">KHUFU</a></div>
         <nav class="nav">
@@ -94,10 +170,32 @@
         <div class="menu-toggle" id="menu-toggle">☰</div>
     </header>
 
+    <!-- ==================== إعلان 1 ==================== -->
+    <!-- المكان: تحت الهيدر مباشرة -->
+    <!-- المقاس: 728×90 أو Responsive -->
+    <div class="ad-container ad-top">
+        <div class="ad-label">إعلان</div>
+        <div class="ad-placeholder">
+            <!-- حط كود الإعلان هنا -->
+            مساحة إعلانية 728×90 أو Responsive
+        </div>
+    </div>
+
     <div class="courses-container">
         <div class="courses-header">
             <h1>مكتبة كورسات KHUFU TRADING</h1>
             <p>كل قسم مقسم لـ 3 مستويات: مبتدئ - متوسط - متقدم</p>
+        </div>
+
+        <!-- ==================== إعلان 2 ==================== -->
+        <!-- المكان: بعد عنوان الصفحة -->
+        <!-- المقاس: 728×90 أو Responsive -->
+        <div class="ad-container ad-after-header">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <!-- حط كود الإعلان هنا -->
+                مساحة إعلانية 728×90 أو Responsive
+            </div>
         </div>
 
         <!-- 1. أساسيات التداول -->
@@ -195,6 +293,17 @@
             </div>
         </div>
 
+        <!-- ==================== إعلان 3 ==================== -->
+        <!-- المكان: في النص بعد قسم SMC -->
+        <!-- المقاس: 300×250 (مربع) -->
+        <div class="ad-container ad-middle">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <!-- حط كود الإعلان هنا -->
+                مساحة إعلانية 300×250
+            </div>
+        </div>
+
         <!-- 6. التحليل الموجي -->
         <div class="course-section">
             <h2>6. التحليل الموجي — Elliott Wave</h2>
@@ -287,6 +396,17 @@
                     <div class="level-title">متقدم</div>
                     <div class="level-desc">كتب الاحتراف وعلم النفس التداولي</div>
                 </a>
+            </div>
+        </div>
+
+        <!-- ==================== إعلان 4 ==================== -->
+        <!-- المكان: في نهاية الصفحة -->
+        <!-- المقاس: 728×90 أو Responsive -->
+        <div class="ad-container ad-bottom">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <!-- حط كود الإعلان هنا -->
+                مساحة إعلانية 728×90 أو Responsive
             </div>
         </div>
 

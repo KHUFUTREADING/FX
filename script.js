@@ -1,4 +1,4 @@
-// ===== نظام تسجيل الدخول الثابت =====
+// ===== نظام تسجيل الدخول =====
 function isLoggedIn() {
     return localStorage.getItem('khufuLoggedIn') === 'true';
 }
@@ -18,7 +18,6 @@ function setLoggedIn(value) {
     const path = window.location.pathname;
     const page = path.split('/').pop() || '';
 
-    // الصفحات اللي محتاجة تسجيل دخول
     const protectedPages = [
         'dashboard.html',
         'course.html',
@@ -52,7 +51,7 @@ function updateHeaderAuth() {
     }
 }
 
-// ===== إخلاء المسؤولية + باقي الحاجات =====
+// ===== الكود الرئيسي =====
 document.addEventListener('DOMContentLoaded', function () {
     updateHeaderAuth();
 
@@ -61,23 +60,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const acceptBtn = document.getElementById('accept-disclaimer');
 
     if (modal && acceptBtn) {
-        // لو وافق قبل كده → اخفي المودال
-        if (localStorage.getItem('disclaimerAccepted') === 'true') {
-            modal.classList.add('hidden');
-            modal.style.display = 'none';
-        } else {
+        // لو لسه ما وافقش → أظهر الرسالة
+        if (localStorage.getItem('disclaimerAccepted') !== 'true') {
             modal.classList.remove('hidden');
             modal.style.display = 'flex';
+        } else {
+            // وافق قبل كده → خليها مخفية
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
         }
 
-        // لما يدوس على الزر
+        // الضغط على زر "أنا المسؤول"
         acceptBtn.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
 
             localStorage.setItem('disclaimerAccepted', 'true');
-
-            // إخفاء المودال بطريقتين عشان يتأكد
             modal.classList.add('hidden');
             modal.style.display = 'none';
         });

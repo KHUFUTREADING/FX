@@ -10,6 +10,7 @@
         .auth-container {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 120px 20px 40px;
@@ -156,6 +157,81 @@
         .error-toast.show {
             bottom: 30px;
         }
+
+        /* ===== أماكن الإعلانات ===== */
+        .ad-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .ad-label {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .ad-placeholder {
+            background: linear-gradient(135deg, #1a2332, #0f1420);
+            border: 1px dashed #3a4a5c;
+            border-radius: 12px;
+            color: #7a8a9a;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .ad-placeholder:hover {
+            border-color: #00d2ff;
+            color: #00d2ff;
+        }
+
+        /* إعلان 1: علوي تحت الهيدر - مقاس 728x90 أو Responsive */
+        .ad-top {
+            margin: 90px auto 25px;
+        }
+        .ad-top .ad-placeholder {
+            min-height: 90px;
+            max-width: 728px;
+            margin: 0 auto;
+        }
+
+        /* إعلان 2: فوق الفورم - مقاس 300x250 أو Responsive */
+        .ad-before-form {
+            margin: 15px auto 25px;
+            max-width: 460px;
+        }
+        .ad-before-form .ad-placeholder {
+            min-height: 250px;
+        }
+
+        /* إعلان 3: تحت الفورم - مقاس 300x250 أو Responsive */
+        .ad-after-form {
+            margin: 30px auto 20px;
+            max-width: 460px;
+        }
+        .ad-after-form .ad-placeholder {
+            min-height: 250px;
+        }
+
+        @media (max-width: 768px) {
+            .ad-top .ad-placeholder {
+                min-height: 70px;
+            }
+            .ad-before-form .ad-placeholder,
+            .ad-after-form .ad-placeholder {
+                min-height: 200px;
+            }
+            .ad-top {
+                margin-top: 80px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -181,7 +257,30 @@
         <div class="menu-toggle" id="menu-toggle">☰</div>
     </header>
 
+    <!-- ==================== إعلان 1 ==================== -->
+    <!-- المكان: تحت الهيدر مباشرة -->
+    <!-- المقاس المناسب: 728×90 (Leaderboard) أو Responsive -->
+    <div class="ad-container ad-top">
+        <div class="ad-label">إعلان</div>
+        <div class="ad-placeholder">
+            <!-- حط كود الإعلان هنا -->
+            مساحة إعلانية 728×90 أو Responsive
+        </div>
+    </div>
+
     <div class="auth-container">
+
+        <!-- ==================== إعلان 2 ==================== -->
+        <!-- المكان: فوق صندوق تسجيل الدخول -->
+        <!-- المقاس المناسب: 300×250 (Medium Rectangle) أو Responsive -->
+        <div class="ad-container ad-before-form">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <!-- حط كود الإعلان هنا -->
+                مساحة إعلانية 300×250 أو Responsive
+            </div>
+        </div>
+
         <div class="auth-box">
             <div class="tab-buttons">
                 <button class="tab-btn active" data-tab="login">تسجيل الدخول</button>
@@ -236,6 +335,18 @@
                 </form>
             </div>
         </div>
+
+        <!-- ==================== إعلان 3 ==================== -->
+        <!-- المكان: تحت صندوق تسجيل الدخول -->
+        <!-- المقاس المناسب: 300×250 (Medium Rectangle) أو Responsive -->
+        <div class="ad-container ad-after-form">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <!-- حط كود الإعلان هنا -->
+                مساحة إعلانية 300×250 أو Responsive
+            </div>
+        </div>
+
     </div>
 
 <script type="module">

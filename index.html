@@ -6,11 +6,115 @@
     <title>KHUFU TRADING | تعليم التداول</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== أماكن الإعلانات ===== */
+        .ad-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 30px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .ad-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .ad-placeholder {
+            background: linear-gradient(135deg, #1a2332, #0f1420);
+            border: 1px dashed #3a4a5c;
+            border-radius: 12px;
+            color: #7a8a9a;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px;
+            transition: all 0.3s ease;
+        }
+
+        .ad-placeholder:hover {
+            border-color: #c9a227;
+            color: #c9a227;
+        }
+
+        /* بانر علوي */
+        .ad-top {
+            margin: 35px auto 0;
+        }
+        .ad-top .ad-placeholder {
+            min-height: 90px;
+        }
+
+        /* بانر عريض */
+        .ad-banner .ad-placeholder {
+            min-height: 120px;
+        }
+
+        /* كارد إعلاني جوه الخدمات */
+        .ad-card {
+            background: linear-gradient(145deg, #1a2332, #0f1420);
+            border: 1px dashed #3a4a5c;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .ad-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-5px);
+        }
+
+        .ad-card .ad-label {
+            position: absolute;
+            top: 12px;
+            left: 15px;
+            font-size: 11px;
+        }
+
+        .ad-card-content {
+            color: #7a8a9a;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* بانر قبل الفوتر */
+        .ad-footer {
+            margin: 40px auto 20px;
+        }
+        .ad-footer .ad-placeholder {
+            min-height: 100px;
+        }
+
+        /* موبايل */
+        @media (max-width: 768px) {
+            .ad-placeholder {
+                min-height: 70px !important;
+                font-size: 13px;
+            }
+            .ad-card {
+                min-height: 180px;
+            }
+            .ad-top {
+                margin: 25px auto 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <!-- رسالة إخلاء المسؤولية -->
-    <div id="disclaimer-modal" class="modal">
+    <div id="disclaimer-modal" class="modal hidden" style="display: none;">
         <div class="modal-content">
             <h2>إخلاء مسؤولية</h2>
             <p>
@@ -19,23 +123,31 @@
                 مفيش أي ضمان للأرباح، وكل القرارات المالية مسؤوليتك أنت لوحدك.
                 إحنا مش مستشارين ماليين، ومش بنقدم توصيات شراء أو بيع.
             </p>
-            <button id="accept-disclaimer">أنا موافق وأتحمل المسؤولية</button>
+            <button id="accept-disclaimer">أنا المسؤول</button>
         </div>
     </div>
 
     <!-- الهيدر -->
     <header class="header">
-    <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">KHUFU</a></div>
-    <nav class="nav">
-        <a href="login.html" class="login-btn">تسجيل الدخول</a>
-        <a href="index.html">الرئيسية</a>
-        <a href="index.html#about">من نحنا</a>
-        <a href="index.html#services">الخدمات</a>
-        <a href="dashboard.html">الكورسات</a>
-        <a href="index.html#chart">شارت مباشر</a>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle">☰</div>
-</header>
+        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">KHUFU</a></div>
+        <nav class="nav">
+            <a href="login.html" class="login-btn">تسجيل الدخول</a>
+            <a href="index.html">الرئيسية</a>
+            <a href="index.html#about">من نحنا</a>
+            <a href="index.html#services">الخدمات</a>
+            <a href="dashboard.html">الكورسات</a>
+            <a href="index.html#chart">شارت مباشر</a>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+    </header>
+
+    <!-- ========== إعلان 1: بانر علوي ========== -->
+    <div class="ad-container ad-top">
+        <div class="ad-label">إعلان</div>
+        <div class="ad-placeholder">
+            مساحة إعلانية علوية (728×90 أو Responsive)
+        </div>
+    </div>
 
     <!-- الخلفية المتحركة -->
     <div class="animated-bg">
@@ -53,8 +165,15 @@
         </div>
     </section>
 
+    <!-- ========== إعلان 2: بعد الـ Hero ========== -->
+    <div class="ad-container ad-banner">
+        <div class="ad-label">إعلان</div>
+        <div class="ad-placeholder">
+            مساحة إعلانية (Leaderboard / Responsive)
+        </div>
+    </div>
 
-    <!-- قسم الشارت المباشر (TradingView Embed) -->
+    <!-- قسم الشارت المباشر -->
     <section id="chart" class="chart-section section">
         <div class="container">
             <h2 class="section-title">شارت مباشر - TradingView</h2>
@@ -88,88 +207,96 @@
         </div>
     </section>
 
+    <!-- ========== إعلان 3: بعد الشارت ========== -->
+    <div class="ad-container ad-banner">
+        <div class="ad-label">إعلان</div>
+        <div class="ad-placeholder">
+            مساحة إعلانية بعد الشارت
+        </div>
+    </div>
+
     <!-- من نحنا -->
     <section id="about" class="about section">
         <div class="container">
             <h2 class="section-title">من نحنا</h2>
             <div class="about-content">
-                <p> إحنا فريق متخصص في تعليم التداول بطريقة بسيطة وعملية، بنساعدك تفهم السوق من البداية،وتتجنب الأخطاء الشائعة من خلال محتوى واضح وتطبيقات عملية مبنية على خبرة حقيقية.
+                <p>
+                    إحنا فريق متخصص في تعليم التداول بطريقة بسيطة وعملية، بنساعدك تفهم السوق من البداية، وتتجنب الأخطاء الشائعة من خلال محتوى واضح وتطبيقات عملية مبنية على خبرة حقيقية.
                 </p>
             </div>
         </div>
     </section>
 
     <!-- الخدمات -->
-<!-- الخدمات -->
-<section id="services" class="services section">
-    <div class="container">
-        <h2 class="section-title">خدماتنا</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="icon">📚</div>
-                <h3>كورسات تعليمية</h3>
-                <p>
-                    دورات تداول منظمة من الصفر للاحتراف في الفوركس وتعلم التداول، التحليل الفني، استراتيجيات التداول، إدارة المخاطر، وقراءة السوق.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="icon">📊</div>
-                <h3>تحليل فني كلاسيكي</h3>
-                <p>
-                    تعلم قراءة الشارتات وتحليل حركة الأسعار واستخدام المؤشرات الفنية باحتراف من خلال تطبيقات عملية ومبسطة.
-                    </p>
-            </div>
-            <div class="service-card">
-                <div class="icon">🧠</div>
-                <h3>إدارة رأس المال</h3>
-                <p>
-                    استراتيجيات فعّالة لإدارة رأس المال وتقليل مخاطر التداول وحماية أموالك أثناء التعامل مع الأسواق.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="icon">🎯</div>
-                <h3>خطط تداول جاهزة</h3>
-                <p>
-                    
-                    خطط تداول عملية تساعدك تختار أسلوب يناسب شخصيتك، وتنظم دخولك وخروجك وتتعامل مع صفقاتك بوضوح.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="icon">📡</div>
-                <h3>التوصيات</h3>
-                <p>
-                    إشارات تداول تعليمية توضح لك سبب الصفقة، مناطق الدخول والخروج، لتفهم التحليل وتتعلم اتخاذ قرارات تداول أكثر وعيًا.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="icon">👥</div>
-                <h3>مجتمع المتداولين</h3>
-                <p>
-                    انضم لمجتمع تداول خاص، شارك أفكارك، ناقش تحليلاتك، واستفد من تجارب وخبرات متداولين آخرين لتطور مستواك.
-                </p>
-            </div>
+    <section id="services" class="services section">
+        <div class="container">
+            <h2 class="section-title">خدماتنا</h2>
+            <div class="services-grid">
 
-            <!-- القسمين الجديدين -->
-            <div class="service-card">
-                <div class="icon">🧘</div>
-                <h3>سيكولوجية التداول</h3>
-                <p>
-                    تعلم التحكم في مشاعرك، وتجنب القرارات العاطفية، واتخذ قرارات تداول أكثر هدوءًا ووعيًا تحت ضغط السوق.
-                </p> 
-            </div>
-            <div class="service-card">
-                <div class="icon">📰</div>
-                <h3>تحليل أساسي</h3>
-                <p>
-                    تعلم فهم الأخبار الاقتصادية والتقارير المالية وتحليل تأثيرها على حركة الأسعار واتجاهات السوق.
-                </p>
+                <div class="service-card">
+                    <div class="icon">📚</div>
+                    <h3>كورسات تعليمية</h3>
+                    <p>دورات تداول منظمة من الصفر للاحتراف في الفوركس وتعلم التداول، التحليل الفني، استراتيجيات التداول، إدارة المخاطر، وقراءة السوق.</p>
+                </div>
+
+                <!-- إعلان كارد -->
+                <div class="service-card ad-card">
+                    <div class="ad-label">إعلان</div>
+                    <div class="ad-card-content">
+                        مساحة إعلانية<br>
+                        (مربع 300×250 أو Responsive)
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">🧠</div>
+                    <h3>إدارة رأس المال</h3>
+                    <p>استراتيجيات فعّالة لإدارة رأس المال وتقليل مخاطر التداول وحماية أموالك أثناء التعامل مع الأسواق.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">🎯</div>
+                    <h3>خطط تداول جاهزة</h3>
+                    <p>خطط تداول عملية تساعدك تختار أسلوب يناسب شخصيتك، وتنظم دخولك وخروجك وتتعامل مع صفقاتك بوضوح.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">📡</div>
+                    <h3>التوصيات</h3>
+                    <p>إشارات تداول تعليمية توضح لك سبب الصفقة، مناطق الدخول والخروج، لتفهم التحليل وتتعلم اتخاذ قرارات تداول أكثر وعيًا.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">👥</div>
+                    <h3>مجتمع المتداولين</h3>
+                    <p>انضم لمجتمع تداول خاص، شارك أفكارك، ناقش تحليلاتك، واستفد من تجارب وخبرات متداولين آخرين لتطور مستواك.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">🧘</div>
+                    <h3>سيكولوجية التداول</h3>
+                    <p>تعلم التحكم في مشاعرك، وتجنب القرارات العاطفية، واتخذ قرارات تداول أكثر هدوءًا ووعيًا تحت ضغط السوق.</p> 
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">📰</div>
+                    <h3>تحليل أساسي</h3>
+                    <p>تعلم فهم الأخبار الاقتصادية والتقارير المالية وتحليل تأثيرها على حركة الأسعار واتجاهات السوق.</p>
+                </div>
+
             </div>
         </div>
+    </section>
+
+    <!-- ========== إعلان 5: قبل الفوتر ========== -->
+    <div class="ad-container ad-footer">
+        <div class="ad-label">إعلان</div>
+        <div class="ad-placeholder">
+            مساحة إعلانية قبل الفوتر (Responsive)
+        </div>
     </div>
-</section>
 
     <!-- فوتر -->
- <!-- فوتر -->
     <footer class="footer">
         <div class="social-icons">
             <a href="https://t.me/khufugold" target="_blank" title="تليجرام" class="social-link">
@@ -178,13 +305,11 @@
             <a href="https://wa.me/201281358908" target="_blank" title="واتساب" class="social-link">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </a>
-          
-          
-           
         </div>
         <p>© 2026 KHUFU TRADING - جميع الحقوق محفوظة</p>
         <p class="small">الموقع تعليمي فقط - التداول يحمل مخاطر عالية</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

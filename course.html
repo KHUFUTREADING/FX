@@ -62,6 +62,74 @@
             text-decoration: none;
             font-weight: 600;
         }
+
+        /* ===== أماكن الإعلانات ===== */
+        .ad-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            text-align: center;
+            padding: 0 15px;
+        }
+        .ad-label {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        .ad-placeholder {
+            background: linear-gradient(135deg, #1a2332, #0f1420);
+            border: 1px dashed #3a4a5c;
+            border-radius: 12px;
+            color: #7a8a9a;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .ad-placeholder:hover {
+            border-color: #00d2ff;
+            color: #00d2ff;
+        }
+
+        /* إعلان علوي */
+        .ad-top {
+            margin: 100px auto 25px;
+        }
+        .ad-top .ad-placeholder {
+            min-height: 90px;
+            max-width: 728px;
+            margin: 0 auto;
+        }
+
+        /* إعلان بعد العنوان */
+        .ad-after-title .ad-placeholder {
+            min-height: 250px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* إعلان في النهاية */
+        .ad-bottom .ad-placeholder {
+            min-height: 90px;
+            max-width: 728px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .ad-top .ad-placeholder,
+            .ad-bottom .ad-placeholder {
+                min-height: 70px;
+            }
+            .ad-after-title .ad-placeholder {
+                min-height: 200px;
+            }
+            .ad-top {
+                margin-top: 85px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -84,11 +152,45 @@
         <div class="menu-toggle" id="menu-toggle">☰</div>
     </header>
 
+    <!-- ==================== إعلان 1 ==================== -->
+    <!-- المكان: تحت الهيدر مباشرة -->
+    <!-- المقاس: 728×90 أو Responsive -->
+    <div class="ad-container ad-top">
+        <div class="ad-label">إعلان</div>
+        <div class="ad-placeholder">
+            <!-- حط كود الإعلان هنا -->
+            مساحة إعلانية 728×90 أو Responsive
+        </div>
+    </div>
+
     <div class="course-page">
         <a href="dashboard.html" class="back-btn">← العودة للكورسات</a>
         <h1 id="courseTitle">جاري التحميل...</h1>
         <div id="levelBadge" class="level-badge"></div>
+
+        <!-- ==================== إعلان 2 ==================== -->
+        <!-- المكان: بعد العنوان وقبل الدروس -->
+        <!-- المقاس: 300×250 -->
+        <div class="ad-container ad-after-title">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <!-- حط كود الإعلان هنا -->
+                مساحة إعلانية 300×250
+            </div>
+        </div>
+
         <div class="lessons" id="lessonsList"></div>
+
+        <!-- ==================== إعلان 3 ==================== -->
+        <!-- المكان: بعد قائمة الدروس -->
+        <!-- المقاس: 728×90 أو Responsive -->
+        <div class="ad-container ad-bottom">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <!-- حط كود الإعلان هنا -->
+                مساحة إعلانية 728×90 أو Responsive
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
@@ -325,7 +427,7 @@
                 if (lesson.link && lesson.link !== '#') {
                     const url = encodeURIComponent(lesson.link);
                     const title = encodeURIComponent(lesson.title);
-                    window.location.href = `player.html?url=${url}&title=${title}&section=${section}&level=${level}`;
+                    window.location.href = `player.html?url=\( {url}&title= \){title}&section=\( {section}&level= \){level}`;
                 }
             });
 
