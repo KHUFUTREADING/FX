@@ -41,6 +41,54 @@
             font-size: 0.95rem;
             color: #aaa;
         }
+
+        /* ===== أماكن الإعلانات (بدون مستطيل) ===== */
+        .ad-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 25px;
+            text-align: center;
+            padding: 0 15px;
+        }
+        .ad-label {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        .ad-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* إعلان علوي (فوق الفيديو) */
+        .ad-top {
+            margin-bottom: 25px;
+        }
+        .ad-top .ad-placeholder {
+            min-height: 90px;
+            max-width: 728px;
+            margin: 0 auto;
+        }
+
+        /* إعلان طويل (تحت الفيديو) */
+        .ad-bottom {
+            margin-top: 30px;
+        }
+        .ad-bottom .ad-placeholder {
+            min-height: 90px;
+            max-width: 728px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .ad-top .ad-placeholder,
+            .ad-bottom .ad-placeholder {
+                min-height: 70px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -66,6 +114,24 @@
     </header>
 
     <div class="player-container">
+
+        <!-- ==================== إعلان 1 (فوق الفيديو) ==================== -->
+        <div class="ad-container ad-top">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <script>
+                  atOptions = {
+                    'key' : 'bd49f7621677b70fd631640ad246f7a8',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
+            </div>
+        </div>
+
         <h1 class="video-title" id="videoTitle">جاري التحميل...</h1>
         
         <div class="video-wrapper" id="videoWrapper">
@@ -75,6 +141,24 @@
         <div class="controls-info">
             استخدم أزرار التحكم أسفل الفيديو للتشغيل / الإيقاف / الصوت / الشاشة الكاملة.
         </div>
+
+        <!-- ==================== إعلان 2 (المقاس الطويل تحت الفيديو) ==================== -->
+        <div class="ad-container ad-bottom">
+            <div class="ad-label">إعلان</div>
+            <div class="ad-placeholder">
+                <script>
+                  atOptions = {
+                    'key' : 'bd49f7621677b70fd631640ad246f7a8',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/bd49f7621677b70fd631640ad246f7a8/invoke.js"></script>
+            </div>
+        </div>
+
     </div>
 
     <script>

@@ -141,7 +141,7 @@
 
     <header class="header">
         <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">KHUFU</a></div>
-        <nav class="nav">
+        <nav class="nav" id="navMenu">
             <a href="login.html" class="login-btn">تسجيل الدخول</a>
             <a href="index.html">الرئيسية</a>
             <a href="index.html#about">من نحنا</a>
@@ -173,14 +173,7 @@
         <a href="dashboard.html" class="back-btn">← العودة للكورسات</a>
         <h1 id="courseTitle">جاري التحميل...</h1>
         <div id="levelBadge" class="level-badge"></div>
-
-        <!-- ==================== إعلان 2 ==================== -->
-        <div class="ad-container ad-after-title">
-            <div class="ad-label">إعلان</div>
-            <div class="ad-placeholder">
-                <!-- حط كود الإعلان هنا لو حابب -->
-                مساحة إعلانية 300×250
-            </div>
+       
         </div>
 
         <div class="lessons" id="lessonsList"></div>
@@ -205,6 +198,15 @@
 
     <script src="script.js"></script>
     <script>
+        // فتح/إغلاق قائمة الموبايل
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('navMenu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
         const params = new URLSearchParams(window.location.search);
         const section = params.get('section');
         const level = params.get('level');
@@ -437,8 +439,9 @@
                 if (lesson.link && lesson.link !== '#') {
                     const url = encodeURIComponent(lesson.link);
                     const title = encodeURIComponent(lesson.title);
-                    // ✅ تم التصليح هنا
-                    window.location.href = `player.html?url=\( {url}&title= \){title}&section=\( {section}&level= \){level}`;
+                    
+                    // ✅ التصحيح الصحيح هنا
+                    window.location.href = `player.html?url=${url}&title=${title}&section=${section}&level=${level}`;
                 }
             });
 
