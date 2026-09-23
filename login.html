@@ -211,22 +211,50 @@
             min-height: 250px;
         }
 
-        /* إعلان 3: تحت الفورم - مقاس 300x250 أو Responsive */
+        /* إعلان 3: تحت الفورم - مقاس 300x250 بالظبط */
         .ad-after-form {
             margin: 30px auto 20px;
-            max-width: 460px;
+            max-width: 300px;
+            width: 300px;
+            padding: 0;
         }
         .ad-after-form .ad-placeholder {
+            width: 300px;
+            height: 250px;
             min-height: 250px;
+            max-height: 250px;
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .ad-after-form .ad-placeholder iframe {
+            display: block;
+            width: 300px !important;
+            height: 250px !important;
+            margin: 0 auto;
+            border: none;
         }
 
         @media (max-width: 768px) {
             .ad-top .ad-placeholder {
                 min-height: 70px;
             }
-            .ad-before-form .ad-placeholder,
-            .ad-after-form .ad-placeholder {
+            .ad-before-form .ad-placeholder {
                 min-height: 200px;
+            }
+            .ad-after-form {
+                max-width: 300px;
+                width: 100%;
+            }
+            .ad-after-form .ad-placeholder {
+                width: 300px;
+                height: 250px;
+                min-height: 250px;
+                max-height: 250px;
             }
             .ad-top {
                 margin-top: 80px;
@@ -279,131 +307,10 @@
 
     <div class="auth-container">
 
-
-
         <div class="auth-box">
             <div class="tab-buttons">
                 <button class="tab-btn active" data-tab="login">تسجيل الدخول</button>
-                <butto// ===== نظام تسجيل الدخول =====
-function isLoggedIn() {
-return localStorage.getItem('khufuLoggedIn') === 'true';
-}
-
-function setLoggedIn(value) {
-if (value) {
-localStorage.setItem('khufuLoggedIn', 'true');
-} else {
-localStorage.removeItem('khufuLoggedIn');
-localStorage.removeItem('khufuUserName');
-localStorage.removeItem('khufuUserEmail');
-}
-}
-
-// ===== حماية صفحات الكورسات =====
-(function protectCourses() {
-const path = window.location.pathname;
-const page = path.split('/').pop() || '';
-
-const protectedPages = [
-'dashboard.html',
-'course.html',
-'player.html'
-];
-
-const isProtected = protectedPages.some(p => page === p || page.startsWith(p));
-
-if (isProtected && !isLoggedIn()) {
-window.location.href = 'login.html';
-}
-})();
-
-// تحديث الهيدر حسب حالة الدخول
-function updateHeaderAuth() {
-const loginBtn = document.querySelector('.login-btn');
-if (!loginBtn) return;
-
-if (isLoggedIn()) {
-loginBtn.textContent = 'تسجيل الخروج';
-loginBtn.href = '#';
-loginBtn.onclick = function (e) {
-e.preventDefault();
-setLoggedIn(false);
-window.location.href = 'index.html';
-};
-} else {
-loginBtn.textContent = 'تسجيل الدخول';
-loginBtn.href = 'login.html';
-loginBtn.onclick = null;
-}
-}
-
-// ===== الكود الرئيسي =====
-document.addEventListener('DOMContentLoaded', function () {
-updateHeaderAuth();
-
-// ===== إخلاء المسؤولية (نسخة مُصلحة) =====
-const modal = document.getElementById('disclaimer-modal');
-const acceptBtn = document.getElementById('accept-disclaimer');
-
-if (modal && acceptBtn) {
-// شيل أي ستايل قديم
-modal.style.display = '';
-modal.classList.remove('hidden');
-
-// لو لسه ما وافقش → أظهر الرسالة إجباري
-if (localStorage.getItem('disclaimerAccepted') !== 'true') {
-modal.style.display = 'flex';
-modal.classList.remove('hidden');
-console.log('رسالة إخلاء المسؤولية ظهرت');
-} else {
-modal.style.display = 'none';
-modal.classList.add('hidden');
-console.log('المستخدم وافق قبل كده');
-}
-
-// الضغط على زر "أنا المسؤول"
-acceptBtn.addEventListener('click', function (e) {
-e.preventDefault();
-e.stopPropagation();
-
-localStorage.setItem('disclaimerAccepted', 'true');
-modal.style.display = 'none';
-modal.classList.add('hidden');
-console.log('تم قبول إخلاء المسؤولية');
-});
-} else {
-console.error('مشكلة: عنصر الرسالة أو الزر مش موجود');
-}
-
-// ===== قائمة الموبايل =====
-const menuToggle = document.getElementById('menu-toggle');
-const nav = document.querySelector('.nav');
-
-if (menuToggle && nav) {
-menuToggle.addEventListener('click', () => {
-nav.classList.toggle('active');
-});
-}
-
-// ===== أنيميشن الكروت =====
-const cards = document.querySelectorAll('.service-card');
-
-if (cards.length > 0) {
-const observer = new IntersectionObserver((entries) => {
-entries.forEach((entry, index) => {
-if (entry.isIntersecting) {
-setTimeout(() => {
-entry.target.classList.add('visible');
-}, index * 100);
-}
-});
-}, {
-threshold: 0.15
-});
-
-cards.forEach(card => observer.observe(card));
-}
-});n class="tab-btn" data-tab="register">إنشاء حساب</button>
+                <button class="tab-btn" data-tab="register">إنشاء حساب</button>
             </div>
 
             <!-- ===== تسجيل الدخول ===== -->
@@ -436,7 +343,7 @@ cards.forEach(card => observer.observe(card));
                     </div>
                     <div class="form-group">
                         <label><span class="icon">📱</span> رقم الواتساب</label>
-                        <input type="tel" placeholder="01xxxxxxxxx" required>
+                        <input type="tel" id="whatsapp-input" placeholder="01xxxxxxxxx" required minlength="11" maxlength="11" pattern="[0-9]{11}" title="رقم الواتساب يجب أن يكون 11 رقم بالضبط">
                     </div>
                     <div class="form-group">
                         <label><span class="icon">✈️</span> يوزر التليجرام</label>
@@ -455,18 +362,107 @@ cards.forEach(card => observer.observe(card));
             </div>
         </div>
 
+        
+<!-- ===== إعلان عشوائي 2 (Container) ===== -->
+<div class="ad-container" style="margin:20px auto; max-width:460px;">
+    <div class="ad-label">إعلان</div>
+    <div class="ad-placeholder" style="min-height:90px;">
+        <script async="async" data-cfasync="false" src="https://pl31412485.profitableratecpmnetwork.com/058273d851a27edbe6c2cb06056d9359/invoke.js"></script>
+        <div id="container-058273d851a27edbe6c2cb06056d9359"></div>
+    </div>
+</div>
+
         <!-- ==================== إعلان 3 ==================== -->
         <!-- المكان: تحت صندوق تسجيل الدخول -->
         <!-- المقاس المناسب: 300×250 (Medium Rectangle) أو Responsive -->
         <div class="ad-container ad-after-form">
             <div class="ad-label">إعلان</div>
             <div class="ad-placeholder">
-                <!-- حط كود الإعلان هنا -->
-                مساحة إعلانية 300×250 أو Responsive
+              <script>
+  atOptions = {
+    'key' : '2b81e366d6ebcde47d714ba7f3101048',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/2b81e366d6ebcde47d714ba7f3101048/invoke.js"></script>
+              
             </div>
         </div>
 
     </div>
+
+<script>
+// ===== نظام تسجيل الدخول =====
+function isLoggedIn() {
+  return localStorage.getItem('khufuLoggedIn') === 'true';
+}
+
+function setLoggedIn(value) {
+  if (value) {
+    localStorage.setItem('khufuLoggedIn', 'true');
+  } else {
+    localStorage.removeItem('khufuLoggedIn');
+    localStorage.removeItem('khufuUserName');
+    localStorage.removeItem('khufuUserEmail');
+  }
+}
+
+// ===== حماية صفحات الكورسات =====
+(function protectCourses() {
+  const path = window.location.pathname;
+  const page = path.split('/').pop() || '';
+
+  const protectedPages = [
+    'dashboard.html',
+    'course.html',
+    'player.html'
+  ];
+
+  const isProtected = protectedPages.some(p => page === p || page.startsWith(p));
+
+  if (isProtected && !isLoggedIn()) {
+    window.location.href = 'login.html';
+  }
+})();
+
+// تحديث الهيدر حسب حالة الدخول
+function updateHeaderAuth() {
+  const loginBtn = document.querySelector('.login-btn');
+  if (!loginBtn) return;
+
+  if (isLoggedIn()) {
+    loginBtn.textContent = 'تسجيل الخروج';
+    loginBtn.href = '#';
+    loginBtn.onclick = function (e) {
+      e.preventDefault();
+      setLoggedIn(false);
+      window.location.href = 'index.html';
+    };
+  } else {
+    loginBtn.textContent = 'تسجيل الدخول';
+    loginBtn.href = 'login.html';
+    loginBtn.onclick = null;
+  }
+}
+
+// ===== الكود الرئيسي =====
+document.addEventListener('DOMContentLoaded', function () {
+  updateHeaderAuth();
+
+  // ===== قائمة الموبايل =====
+  const menuToggle = document.getElementById('menu-toggle');
+  const nav = document.querySelector('.nav');
+
+  if (menuToggle && nav) {
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  }
+});
+</script>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
@@ -507,6 +503,19 @@ cards.forEach(card => observer.observe(card));
       document.getElementById(btn.dataset.tab).classList.add('active');
     });
   });
+
+  // تقييد إدخال رقم الواتساب لأرقام فقط + 11 رقم
+  const whatsappInput = document.getElementById('whatsapp-input');
+  if (whatsappInput) {
+    whatsappInput.addEventListener('input', function () {
+      // إزالة أي حرف غير رقم
+      this.value = this.value.replace(/\D/g, '');
+      // قطع الزيادة عن 11 رقم
+      if (this.value.length > 11) {
+        this.value = this.value.slice(0, 11);
+      }
+    });
+  }
 
   // ===== تسجيل الدخول =====
   const loginForm = document.getElementById('login-form');
@@ -581,6 +590,12 @@ cards.forEach(card => observer.observe(card));
       const password = inputs[4].value;
       const confirmPassword = inputs[5].value;
 
+      // التحقق من رقم الواتساب: لازم 11 رقم بالضبط وأرقام فقط
+      if (!/^\d{11}$/.test(whatsapp)) {
+        showError('رقم الواتساب لازم يكون 11 رقم بالضبط');
+        return;
+      }
+
       if (password !== confirmPassword) {
         showError('كلمة المرور وتأكيدها غير متطابقين');
         return;
@@ -635,5 +650,16 @@ cards.forEach(card => observer.observe(card));
     });
   }
 </script>
+
+<!-- الإعلان الجديد -->
+<script src="https://pl31412484.profitableratecpmnetwork.com/2d/2b/f7/2d2bf7160e7be0c0bae818e3de154a2b.js"></script>
+
+
+<!-- ===== إعلان عشوائي 1 ===== -->
+<script src="https://pl31412484.profitableratecpmnetwork.com/2d/2b/f7/2d2bf7160e7be0c0bae818e3de154a2b.js"></script>
+
+<!-- ===== إعلان عشوائي 3 ===== -->
+<script src="https://pl31412486.profitableratecpmnetwork.com/09/31/ff/0931ff8363ac72d6807e3008254d0bc0.js"></script>
+
 </body>
 </html>
